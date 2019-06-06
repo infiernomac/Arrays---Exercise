@@ -1,0 +1,77 @@
+using System;
+
+namespace Max_Sequence_of_Equal_Elements
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string numbers = Console.ReadLine();
+
+			string[] array = numbers.Split(" ");
+
+			int[] intArray = new int[array.Length];
+
+			int count = 0;
+			int innerCount = int.MinValue;
+
+			int sequeNumber = 0;
+
+
+			for (int a = 0; a < array.Length; a++)
+			{
+				intArray[a] = int.Parse(array[a]);
+			}
+
+			for (int a = array.Length - 1; a >= 0; a--)
+			{
+
+				if (a - 1 < 0)
+				{
+					if (intArray[0].Equals(intArray[1]))
+					{
+						if (count >= innerCount)
+						{
+							innerCount = count;
+							count = 0;
+							sequeNumber = intArray[a];
+						}
+					}
+					break;
+				}
+
+				if (intArray[a].Equals(intArray[a - 1]))
+				{
+					count++;
+				}
+				else
+				{
+					if (count >= innerCount)
+					{
+						innerCount = count;
+						count = 0;
+						sequeNumber = intArray[a];
+					}
+					else
+					{
+						count = 0;
+					}
+				}
+
+			}
+			if (innerCount.Equals(0))
+			{
+				Console.Write(intArray[0]);
+			}
+			else
+			{
+
+
+				for (int b = 0; b <= innerCount; b++)
+				{
+					Console.Write($"{sequeNumber} ");
+				}
+			}
+		}
+	}
+}
