@@ -1,0 +1,37 @@
+using System;
+
+namespace Array_Rotation
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string numbers = Console.ReadLine();
+
+			string[] array = numbers.Split(" ");
+
+			int rotations = int.Parse(Console.ReadLine());
+
+			int arraySize = array.Length - 1;
+
+			for (int i = 0; i < rotations; i++)
+			{
+				for (int a = 0; a < arraySize; a++)
+				{
+					string item = array[a];
+					string item2 = array[a + 1];
+
+					array[a] = item2;
+					array[a + 1] = item;
+				}
+			}
+			
+
+			foreach (var item in array)
+			{
+				Console.Write(item.ToString());
+				Console.Write(" ");
+			}
+		}
+	}
+}
