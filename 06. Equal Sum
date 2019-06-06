@@ -1,0 +1,61 @@
+using System;
+
+namespace Equal_Sum
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string numbers = Console.ReadLine();
+
+			string[] array = numbers.Split(" ");
+
+			double[] intArray = new double[array.Length];
+
+			bool notEqualSum = true;
+
+			double leftSum = 0;
+			double rightSum = 0;
+
+			for (int a = 0; a < array.Length; a++)
+			{
+				intArray[a] = int.Parse(array[a]);
+			}
+
+			if (intArray.Length.Equals(1))
+			{
+				notEqualSum = false;
+				Console.WriteLine(0);
+			}
+			else
+			{
+				for (int a = 0; a < array.Length; a++)
+				{
+					for (int b = 0; b < a; b++)
+					{
+						leftSum += intArray[b];
+					}
+
+					for (int c = a + 1; c < array.Length; c++)
+					{
+						rightSum += intArray[c];
+					}
+
+					if (leftSum.Equals(rightSum))
+					{
+						Console.WriteLine(a);
+						notEqualSum = false;
+						break;
+					}
+
+					rightSum = 0;
+					leftSum = 0;
+				}
+			}
+			if (notEqualSum)
+			{
+				Console.WriteLine("no");
+			}
+		}
+	}
+}
