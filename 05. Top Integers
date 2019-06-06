@@ -1,0 +1,41 @@
+using System;
+
+namespace Top_Integers
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string numbers = Console.ReadLine();
+
+			string[] array = numbers.Split(" ");
+
+			int[] intArray = new int[array.Length];
+			bool topIntegers = true;
+			
+
+			for (int a = 0; a < array.Length; a++)
+			{
+				intArray[a] = int.Parse(array[a]);
+			}
+
+			for (int b = 0; b < array.Length; b++)
+			{
+				topIntegers = true;
+				for (int c = 1 + b; c < array.Length; c++)
+				{
+					if (intArray[b] <= intArray[c])
+					{
+						topIntegers = false;
+						break;
+					}
+				}
+				if (topIntegers)
+				{
+					Console.Write($"{intArray[b]} ");
+					topIntegers = false;
+				}
+			}
+		}
+	}
+}
