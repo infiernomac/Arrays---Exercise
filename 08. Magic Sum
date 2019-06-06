@@ -1,0 +1,31 @@
+using System;
+
+namespace Magic_Sum
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			string[] array = Console.ReadLine().Split(" ");
+			int number = int.Parse(Console.ReadLine());
+
+			int[] intArray = new int[array.Length];
+
+			for (int a = 0; a < array.Length; a++)
+			{
+				intArray[a] = int.Parse(array[a]);
+			}
+
+			for (int a = 0; a < array.Length - 1; a++)
+			{
+				for (int b = a + 1; b < array.Length; b++)
+				{
+					if ((intArray[a] + intArray[b]).Equals(number))
+					{
+						Console.WriteLine($"{intArray[a]} {intArray[b]}");
+					}
+				}
+			}
+		}
+	}
+}
