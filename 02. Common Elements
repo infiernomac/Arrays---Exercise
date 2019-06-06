@@ -1,0 +1,33 @@
+using System;
+
+namespace Common_Elements
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+
+			string txt1 = Console.ReadLine();
+			string txt2 = Console.ReadLine();
+
+			string[] array1 = txt1.Split(" ");
+			string[] array2 = txt2.Split(" ");
+
+			
+
+			for (int i = 0; i < array2.Length; i++)
+			{
+				for (int j = 0; j < array1.Length; j++)
+				{
+
+					if (array2[i].Equals(array1[j]))
+					{
+						Console.Write(array2[i]);
+						Console.Write(" ");
+					}
+				}
+			}
+			
+		}
+	}
+}
